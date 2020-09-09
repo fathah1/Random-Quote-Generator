@@ -1,0 +1,94 @@
+$colors:(
+    background1 : #E83350,
+    background2 : #0A3D62,
+    background3 :#67E6DC,
+    background4 : #10A881,
+    background5 : #53E0BC,
+    background6 : #DFAF2B,
+    background7 : #2C3335,
+    background8 : #758AA2,
+    background9 :#E74292,
+    background10:#2B2B52,
+    background11: #EA7773
+    );
+
+
+@function color($colorName){
+    @return map-get($map:$colors, $key:$colorName );
+}
+
+html{
+    background-color:color(background1);
+}
+
+.App-header{
+    color:white;
+    text-align:center;
+    margin-top:3rem;
+    
+    
+    h1{
+        font-size:45px;
+        font-family: 'Roboto Slab';
+    }
+
+    .tag-line{
+        font-family: 'Parisienne', cursive;
+    }
+
+}
+
+
+
+#quote-box{
+    position:relative;
+    margin:auto auto;
+    margin-top:150px;
+    width:700px;
+    height:400px;
+    background-color:white;
+    color:color(background1);
+    text-align:center;
+    border-radius:10px;
+    
+    #text{
+        font-family:helvetica;
+        margin-top:50px;
+        padding:120px;
+        padding-bottom:30px;
+    }
+
+    #author{
+        font-family: 'Parisienne', cursive;
+        display:inline;
+        margin-right:-450px;
+        padding-bottom:50px;
+    }
+}
+
+.buttons{
+    
+    margin:100px 25px ;
+    display:flex;
+    justify-content:space-between;
+
+    #tweet-quote{
+        background-color: rgb(69, 137, 216);
+        color: white;
+        padding: 0.9em 1.5em;
+        text-decoration: none;
+        text-transform: uppercase;
+        border-radius:7px;
+    }
+
+    #new-quote{
+        margin-right:30px;
+        width:125px;
+        background-color:color(background1);
+        color:white;
+        font-size:15px;
+        font-family:helvetica;
+        border:none;
+        border-radius:20px;
+    }
+}
