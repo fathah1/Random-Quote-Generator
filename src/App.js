@@ -1,11 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
 
 //RANDOM QUOTE MACHINE PROJECT
 
 function App() {
+
+  const [quote,setQuote] = useState("");
+  const [author,setAuthor] = useState("");
+
+   
+  
+      async function quoteApi  ()  {  
+        const response = await fetch('https://api.quotable.io/random');
+        const data = await response.json();
+        const newQuote = data['content'];
+        const newAuthor = data['author'];
+        setQuote(newQuote)
+        setAuthor(newAuthor)
+        };
+
+
+
+    useEffect(() => {
+      quoteApi();
+    },[])
+
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -14,16 +35,18 @@ function App() {
       </header>
 
         <div id="quote-box">
-            <h2 id="text">"Add quotes from API"</h2>
-            <h3 id="author">:- author's name</h3> 
+            <h2 id="text">"{quote}"</h2>
+            <h3 id="author">{author}</h3> 
             <div class="buttons"> 
-              <a id="tweet-quote" class="fa fa-twitter" target="_blank" href="twitter.com/intent/tweet"></a>
-              <button id="new-quote">New Quote</button>
+              <a id="tweet-quote" class="fa fa-twitter" target="_blank" href="twitter.com/intent/tweet"> </a>
+              <button id="new-quote" onClick={quoteApi}>New Quote</button>
             </div>
         </div>
       
     </div>
   );
 }
+
+
 
 export default App;
